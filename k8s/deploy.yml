@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: very-secure-app-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: verysecureapp
+  template:
+    metadata:
+      labels:
+        app: verysecureapp
+    spec:
+      containers:
+        - name: verysecureapp
+          image: tushardevsharma/very-secure-app:v0.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MY_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: my-secret          # Name of the Kubernetes Secret
+                  key: my_secret           # Key in the Secret

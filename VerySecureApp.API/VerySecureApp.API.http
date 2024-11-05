@@ -1,0 +1,6 @@
+@VerySecureApp.API_HostAddress = http://localhost:5019
+
+GET {{VerySecureApp.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

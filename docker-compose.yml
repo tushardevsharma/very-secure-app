@@ -1,0 +1,13 @@
+﻿services:
+  verysecureapp.api:
+    image: verysecureapp.api
+    build:
+      context: .
+      dockerfile: VerySecureApp.API/Dockerfile
+    ports:
+      - "32771:8080"
+    secrets:
+      - my_secret
+secrets:
+  my_secret:
+    external: true
