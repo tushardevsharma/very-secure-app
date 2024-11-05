@@ -1,1 +1,1 @@
-# Using k8 secrets and AWS Secrets Manager to secure passwords
+# Securing passwords using using k8 secrets
