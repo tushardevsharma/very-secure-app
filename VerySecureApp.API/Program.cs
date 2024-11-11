@@ -37,9 +37,9 @@ app.MapGet("/weatherforecast", () =>
     .WithName("GetWeatherForecast")
     .WithOpenApi();
 
-app.MapGet("/secret", () =>
+app.MapGet("/secrets", () =>
     {
-        var mySecret = builder.Configuration["MY_SECRET"];
+        var mySecret = builder.Configuration["V2_ACC"];
         return string.IsNullOrEmpty(mySecret) ? "Secret not found!" : $"Secret Value: {mySecret}";
     })
     .WithName("Getk8Secret")

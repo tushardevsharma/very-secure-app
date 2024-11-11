@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: verysecureapp
-          image: tushardevsharma/very-secure-app:v0.2
+          image: tushardevsharma/very-secure-app:v0.3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -24,3 +24,13 @@ spec:
                 secretKeyRef:
                   name: my-secret          # Name of the Kubernetes Secret
                   key: my_secret           # Key in the Secret
+            - name: V2_ACC
+              valueFrom:
+                secretKeyRef:
+                  name: my-k8s-secret      # Name of the Kubernetes secret
+                  key: v2-acc              # Key in the secret
+            - name: V3_ACC
+              valueFrom:
+                secretKeyRef:
+                  name: my-k8s-secret      # Name of the Kubernetes secret
+                  key: v3-acc
