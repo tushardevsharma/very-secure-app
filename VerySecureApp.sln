@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{E3B603FE-20B
 		k8s\service.yml = k8s\service.yml
 		k8s\aws-secret-store.yml = k8s\aws-secret-store.yml
 		k8s\external-secrets.yml = k8s\external-secrets.yml
+		k8s\dashboard-for-dev.yml = k8s\dashboard-for-dev.yml
+		k8s\dev-role-binding.yml = k8s\dev-role-binding.yml
 	EndProjectSection
 EndProject
 Global
