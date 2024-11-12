@@ -6,6 +6,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Configuration.AddEnvironmentVariables();
 
+// Read the secrets from files in /etc/secrets directory
+var v2Acc = File.ReadAllText("/etc/secrets/v2-acc-file").Trim();
+var v3Acc = File.ReadAllText("/etc/secrets/v3-acc-file").Trim();
+
+// You can now use these values in the configuration or elsewhere in the app
+builder.Configuration.AddInMemoryCollection(new Dictionary<string, string?>
+{
+    { "V2_Acc", v2Acc },
+    { "V3_Acc", v3Acc },
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -39,8 +50,10 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapGet("/secrets", () =>
     {
-        var mySecret = builder.Configuration["V2_ACC"];
-        return string.IsNullOrEmpty(mySecret) ? "Secret not found!" : $"Secret Value: {mySecret}";
+        var v2Acc = builder.Configuration["V2_Acc"];
+        var v3Acc = builder.Configuration["V3_Acc"];
+
+        return new { V2Acc = v2Acc, V3Acc = v3Acc, };
     })
     .WithName("Getk8Secret")
     .WithOpenApi();
